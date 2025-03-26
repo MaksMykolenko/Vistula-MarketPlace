@@ -34,14 +34,13 @@ a,p {
     transition: color 0.3s ease-in-out;
 }
 
-a,p:hover {
+a:hover,p:hover {
     color: #7300ff; /* Яскравий колір при наведенні */
 }
 
 h1:hover, h2:hover {
     color: #7300ff;
 }
-
 
 /* ====== ГОЛОВНІ СТИЛІ NAVBAR ====== */
 .navbar {
@@ -214,74 +213,148 @@ h1:hover, h2:hover {
     }
 }
 
-/* ====== ОСНОВНИЙ КОНТЕЙНЕР ====== */
+/* ====== ГОЛОВНИЙ КОНТЕЙНЕР ====== */
 .main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    gap: 20px;
+    width: 100%;
     padding: 20px;
-    background: #121212; /* Темний фон */
-    color: #e0e0e0; /* Світлий текст */
+    background: #121212;
+    color: #e0e0e0;
 }
 
-/* ====== СТИЛІ ДЛЯ БЛОКІВ КОНТЕНТУ ====== */
+/* ====== КОНТЕЙНЕР ДЛЯ ФОРМИ ====== */
 .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 800px;
-    min-height: 250px;
-    background: #1e1e1e; /* Темний фон для блоків */
+    width: 100%;  /* Адаптивна ширина */
+    max-width: 600px; /* Максимальна ширина 600px */
+    background: #1e1e1e;
     border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Світла тінь */
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center; /* Вирівнювання тексту по центру */
+    text-align: center;
 }
 
-/* Анімація при наведенні */
-.content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+.signup-container{
+    width: 60%;
+    max-width: 500px;
+}
+
+/* Заголовок */
+.signup-container h2 {
+    margin-bottom: 40px;
+    font-size: 24px;
 }
 
 
-/* ====== СТИЛІ ДЛЯ КНОПКИ ====== */
-button {
-    width: 200px;
-    background: #5d00ff; /* Яскравий акцентний колір */
-    color: white;
+/* ====== Стилі для label ====== */
+.signup-container label {
+    display: block; /* Робить label блочним, щоб він був над input */
+    font-size: 25px; /* Оптимальний розмір шрифту */
+    font-weight: bold; /* Жирний текст */
+    color: #fff; /* Колір тексту */
+    text-align: left; /* Вирівнювання по лівому краю */
+    text-transform: uppercase; /* Робить текст у label великими літерами */
+    letter-spacing: 1px; /* Додає трохи простору між буквами */
+}
+
+
+/* ====== СТИЛІ ДЛЯ ФОРМИ ====== */
+.signup-container form {
+    display: flex;
+    flex-direction: column; /* Елементи розташовані вертикально */
+    width: 100%;
+    gap: 15px; /* Відступ між полями */
+}
+
+/* Поля вводу */
+.signup-container label {
+    text-align: left;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.signup-container input:focus {
+    border-color: #5d00ff;
+}
+
+/* Поле пароля з кнопкою для показу */
+.password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.btn-toggle {
+    position: absolute;
+    right: 10px;
+    background: none;
     border: none;
-    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+.btn-toggle:hover {
+    color: #5d00ff;
+}
+
+/* Кнопка відправки */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #5d00ff;
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s ease;
 }
 
-button:hover {
+.btn:hover {
     background: #5d00ffe9;
-    transform: scale(1.05);
 }
 
-/* ====== АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ====== */
-@media (max-width: 768px) {
+/* Адаптивність */
+@media (max-width: 480px) {
     .content {
-        max-width: 90%;
-        min-height: 200px;
         padding: 20px;
+        width: 95%;
     }
+}
 
-    button {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
+.not-have-account {
+    margin-top: 20px;
+    text-align: center; /* Centers the text */
+    font-size: 14px; /* Adjusts readability */
 }
 
 /* ====== ФУТЕР ====== */
@@ -315,7 +388,7 @@ footer a:hover {
 @media (max-width: 768px) {
     footer {
         font-size: 0.9em; /* Трохи зменшуємо розмір */
-        bottom: 60px; /* Ще трохи піднімаємо */
+        bottom: 60px; 
         padding: 10px;
     }
 }

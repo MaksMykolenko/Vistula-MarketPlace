@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vistula MarketPlace</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="log-in.css">
+    <script src="sign-up.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
@@ -27,20 +27,30 @@
             </li>
         </ul>
     </nav>
-    
-    
+        
     <div class="main-content">
-        <header class="content">
-            <h1>Vistula MarketPlace</h1>
-            <p>Продавай і купуй комфортніше</p>
-        </header>
-
-        <main>
-            <section id = "section1" class = "content">
-                <h2>Почни користуватися Vistula MarketPlace зараз</h2>
-                <button class="button" onclick="window.location.href='sign-up.html'">Почати</button>
-            </section>
-        </main>
+            <div class = "content">
+                <div class="signup-container">
+                    <h2 href = "index.html">Vistula MarketPlace</h2>
+                    <h2>Вхід</h2>
+                    <form id="registerForm" action="/register" method="POST" novalidate>
+                        
+                        <label for="email">Електронна пошта:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="password">Пароль:</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" id="togglePassword" class="btn-toggle">👁️</button>
+                        </div>
+                        
+                        <button type="submit" class="btn">Увійти</button>
+                    </form>
+                </div>
+                <div class="not-have-account">
+                    <a href="sign-up.html">Не маєш аккаунту?</a>
+                </div>
+            </div>
     </div>
 
     <footer>

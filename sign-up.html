@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vistula MarketPlace</title>
+    <link rel="stylesheet" href="sign-up.css">
+    <script src="sign-up.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i> <span>Головна</span></a></li>
+            <li><a href="#section2"><i class="fas fa-headset"></i> <span>Підтримка</span></a></li>
+            <li class="search-bar">
+                <button id="searchButton">
+                    <i class="fas fa-search"></i> <span>Пошук</span>
+                </button>
+                <input type="text" id="searchInput" class="search-box" placeholder="Введіть запит...">
+            </li>            
+            <li >
+                <a href="#account">
+                    <i class="fas fa-user"></i> <span>Акаунт</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+        
+    <div class="main-content">
+            <div class = "content">
+                <div class="signup-container">
+                    <h2 href = "index.html">Vistula MarketPlace</h2>
+                    <h2>Реєстрація</h2>
+                    <form id="registerForm" action="/register" method="POST" novalidate>
+                        <label for="username">Ім'я користувача:</label>
+                        <input type="text" id="username" name="username" required>
+                        
+                        <label for="email">Електронна пошта:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="password">Пароль:</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" id="togglePassword" class="btn-toggle">👁️</button>
+                        </div>
+                        
+                        <button type="submit" class="btn">Зареєструватися</button>
+                    </form>
+                </div>
+                <div class="not-have-account">
+                    <a href="log-in.html">Вже маєш аккаунт?</a>
+                </div>
+            </div>
+    </div>
+
+    <footer>
+        <a href="https://maksmykolenko.github.io/NeoFlux/">©Copyright 2025 by NeoFlux Games. All rights reserved.</a>
+    </footer>
+</body>
+</html>
