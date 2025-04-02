@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #111310;;
     color: #fff;
-    overflow: hidden;
 }
 
 *, ::after, ::before {
@@ -34,7 +33,7 @@ a,p {
     transition: color 0.3s ease-in-out;
 }
 
-a,p:hover {
+a:hover, p:hover {
     color: #7300ff; /* Яскравий колір при наведенні */
 }
 
@@ -239,79 +238,195 @@ h1:hover, h2:hover {
     }
 }
 
-/* ====== ОСНОВНИЙ КОНТЕЙНЕР ====== */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    gap: 20px;
+
+/* ====== Контейнер профілю ====== */
+.profile-container {
+    width: 80%;
+    margin: auto;
     padding: 20px;
-    background: #121212; /* Темний фон */
-    color: #e0e0e0; /* Світлий текст */
+    margin-top: 100px; /* Відступ від навбару */
 }
 
-/* ====== СТИЛІ ДЛЯ БЛОКІВ КОНТЕНТУ ====== */
-.content {
+/* ====== Заголовок профілю ====== */
+.profile-header {
+    display: flex;
+    align-items: flex-start; /* Вирівнювання по верхньому краю */
+    gap: 40px; /* Збільшений відступ між фото та текстом */
+    background: #1a1c1f;
+    padding: 25px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ====== Фото профілю ====== */
+.profile-pic {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #7300ff;
+    transition: border-color 0.3s ease-in-out;
+    margin-right: 100px; /* Додає відступ між фото та деталями профілю */
+}
+
+.profile-pic:hover {
+    border-color: #fff;
+}
+
+
+/* ====== Деталі профілю ====== */
+.profile-details {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    min-height: 250px;
-    background: #1e1e1e; /* Темний фон для блоків */
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Світла тінь */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center; /* Вирівнювання тексту по центру */
 }
 
-/* Анімація при наведенні */
-.content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+.profile-details h2 {
+    margin: 0 0 10px 0; /* Додає відступ під ім'ям */
+    font-size: 1.8em;
+    color: #ffffff;
+    letter-spacing: 2px;
+    transition: color 0.3s ease-in-out;
 }
 
+/* ====== Статистика профілю ====== */
+.profile-stats {
+    margin-top: 20px; /* Додано більше відступу між текстом і статистикою */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Відступ між елементами статистики */
+}
 
-/* ====== СТИЛІ ДЛЯ КНОПКИ ====== */
-button {
-    width: 200px;
-    background: #5d00ff; /* Яскравий акцентний колір */
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 18px;
+.profile-stats p {
+    margin: 0;
+    font-size: 1.2em;
     font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    color: #e0e0e0;
+    transition: color 0.3s ease-in-out;
 }
 
-button:hover {
-    background: #5d00ffe9;
-    transform: scale(1.05);
+.profile-stats p:hover {
+    color: #7300ff;
+}
+
+/* ====== Кнопка редагування ====== */
+button#editProfile {
+    margin-top: 20px; /* Відступ від статистики */
+    padding: 10px 20px;
+    border: 2px solid #7300ff;
+    background: transparent;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    align-self: flex-start; /* Фіксує кнопку під статистикою */
+}
+
+button#editProfile:hover {
+    background: #7300ff;
+    border-color: #fff;
+    color: #fff;
+}
+
+/* ====== Історія замовлень ====== */
+.order-history {
+    margin-top: 40px;
+    padding: 25px;
+    background: #181a1d; /* Трохи світліший темний фон */
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ====== Заголовок ====== */
+.order-history h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #7300ff;
+    padding-bottom: 10px;
+}
+
+/* ====== Список замовлень ====== */
+.order-history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-history li {
+    font-size: 1.1em;
+    padding: 15px;
+    background: #22252a; /* Контрастний фон для кожного замовлення */
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.order-history li:hover {
+    background: #2c3038;
+    transform: translateX(5px);
+    color: #7300ff;
+}
+
+/* ====== Іконки замовлень ====== */
+.order-icon {
+    font-size: 1.3em;
+    color: #7300ff;
 }
 
 /* ====== АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ====== */
 @media (max-width: 768px) {
-    .content {
-        max-width: 90%;
-        min-height: 200px;
+    .profile-container {
+        width: 90%;
+        margin-top: 60px;
+    }
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    .profile-details {
+        align-items: center;
+    }
+    .profile-details h2 {
+        font-size: 1.5em;
+    }
+    .profile-stats {
+        align-items: center;
+    }
+    button#editProfile {
+        font-size: 1em;
+        padding: 8px 16px;
+        display: block;
+        margin: 10px auto 0;
+    }
+    .order-history {
         padding: 20px;
     }
-
-    button {
-        font-size: 16px;
-        padding: 10px 20px;
+    .order-history h2 {
+        font-size: 1.3em;
+    }
+    .order-history li {
+        font-size: 1em;
+        padding: 12px;
+        text-align: center;
+        justify-content: center;
     }
 }
 
+
 /* ====== ФУТЕР ====== */
 footer {
-    position: fixed; 
     bottom: 0;
     left: 0;
     right: 0;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vistula MarketPlace</title>
+    <title>V1stula MarketPlace</title>
     <link rel="stylesheet" href="sign-up.css">
     <script src="sign-up.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -12,27 +12,34 @@
 
     <nav class="navbar">
         <ul class="nav-list">
-            <li><a href="index.html"><i class="fas fa-home"></i> <span>Головна</span></a></li>
-            <li><a href="#section2"><i class="fas fa-headset"></i> <span>Підтримка</span></a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> <span data-lang="home">Головна</span></a></li>
+            <li><a href="#section2"><i class="fas fa-headset"></i> <span data-lang="support">Підтримка</span></a></li>
             <li class="search-bar">
                 <button id="searchButton">
-                    <i class="fas fa-search"></i> <span>Пошук</span>
+                    <i class="fas fa-search"></i> <span data-lang="search">Пошук</span>
                 </button>
-                <input type="text" id="searchInput" class="search-box" placeholder="Введіть запит...">
+                <input type="text" id="searchInput" class="search-box" placeholder="Введіть запит..." data-placeholder="searchPlaceholder">
             </li>            
-            <li >
-                <a href="#account">
-                    <i class="fas fa-user"></i> <span>Акаунт</span>
+            <li>
+                <a href="account.html">
+                    <i class="fas fa-user"></i> <span data-lang="account">Акаунт</span>
                 </a>
             </li>
+            <li class="language-selector">
+                <select id="languageSelect">
+                    <option value="ua">🇺🇦 UKR</option>
+                    <option value="en">🇬🇧 ENG</option>
+                    <option value="pl">🇵🇱 PLN</option>
+                </select>
+            </li>
         </ul>
-    </nav>
+    </nav> 
         
     <div class="main-content">
             <div class = "content">
                 <div class="signup-container">
-                    <h2 href = "index.html">Vistula MarketPlace</h2>
-                    <h2>Реєстрація</h2>
+                    <h2 href = "index.html">V1stula MarketPlace</h2>
+                    <h2 data-lang="signup">Реєстрація</h2>
                     <form id="registerForm" action="/register" method="POST" novalidate>
                         <label for="username">Ім'я користувача:</label>
                         <input type="text" id="username" name="username" required>
@@ -45,9 +52,19 @@
                             <input type="password" id="password" name="password" required>
                             <button type="button" id="togglePassword" class="btn-toggle">👁️</button>
                         </div>
+            
+                        <div class="terms-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                <span id="termsText">Я погоджуюсь з</span>
+                                <a href="terms.html" target="_blank" id="termsLink">умовами обслуговування</a>
+                            </label>
+                        </div>
+                        
                         
                         <button type="submit" class="btn">Зареєструватися</button>
                     </form>
+                    
                 </div>
                 <div class="not-have-account">
                     <a href="log-in.html">Вже маєш аккаунт?</a>

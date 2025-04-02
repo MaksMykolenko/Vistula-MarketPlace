@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V1stula MarketPlace</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="script.js" defer></script>
+    <title>Vistula MarketPlace</title>
+    <link rel="stylesheet" href="account.css">
+    <script src="account.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
             </li>            
             <li>
                 <a href="account.html">
-                    <i class="fas fa-user"></i> <span data-lang="account">Акаунт</span>
+                    <i class="fas fa-user"></i> <span data-lang="account">Вийти</span>
                 </a>
             </li>
             <li class="language-selector">
@@ -37,19 +37,32 @@
         </ul>
     </nav>    
     
-    <div class="main-content">
-        <header class="content">
-            <h1>V1stula MarketPlace</h1>
-            <p data-lang="tagline">Продавай і купуй комфортніше</p>
-        </header>
-
-        <main>
-            <section id="section1" class="content">
-                <h2 data-lang="start">Почни користуватися V1stula MarketPlace зараз</h2>
-                <button class="button" onclick="window.location.href='sign-up.html'" data-lang="startBtn">Почати</button>
-            </section>
-        </main>
-    </div>
+    <main class="profile-container">
+        <section class="profile-header">
+            <img src="profile-pic.jpg" alt="Фото профілю" class="profile-pic">
+            <div class="profile-details">
+                <h2 id="userName">Максим Миколенко</h2>
+                <p><strong>Email:</strong> <span id="userEmail">exempl@gmail.com</span></p>
+                <p><strong>Телефон:</strong> <span id="userPhone">+380 11 111 11 11</span></p>
+                
+                <div class="profile-stats">
+                    <p><strong>Оголошення:</strong> <span id="adsCount">5</span></p>
+                    <p><strong>Покупки:</strong> <span id="purchasesCount">12</span></p>
+                </div>
+                
+                <button id="editProfile">Редагувати профіль</button>
+            </div>
+        </section>
+    
+        <section class="order-history">
+            <h2>Історія замовлень</h2>
+            <ul>
+                <li><i class="fas fa-shopping-bag order-icon"></i> <p>Замовлення #1234 – Товар 1 – 250 грн</p></li>
+                <li><i class="fas fa-shopping-bag order-icon"></i> <p>Замовлення #5678 – Товар 2 – 500 грн</p></li>
+            </ul>
+        </section>        
+    </main>
+    
 
     <footer>
         <a href="https://maksmykolenko.github.io/NeoFlux/">©Copyright 2025 by NeoFlux Games. All rights reserved.</a>

@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #111310;;
     color: #fff;
-    overflow: hidden;
 }
 
 *, ::after, ::before {
@@ -12,7 +11,7 @@ body {
 }
 
 /* ====== Заголовки ====== */
-h1, h2 {
+h1, h2, h3 {
     font-family: 'Neue Machina', sans-serif;
     font-weight: bold;
     text-transform: uppercase; /* Робить заголовки стильними */
@@ -38,7 +37,7 @@ a,p:hover {
     color: #7300ff; /* Яскравий колір при наведенні */
 }
 
-h1:hover, h2:hover {
+h1:hover, h2:hover, h3:hover {
     color: #7300ff;
 }
 
@@ -264,6 +263,7 @@ h1:hover, h2:hover {
     background: #1e1e1e; /* Темний фон для блоків */
     border-radius: 12px;
     padding: 25px;
+    margin-top: 60px; /* Збільшений відступ зверху */
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Світла тінь */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center; /* Вирівнювання тексту по центру */
@@ -311,7 +311,6 @@ button:hover {
 
 /* ====== ФУТЕР ====== */
 footer {
-    position: fixed; 
     bottom: 0;
     left: 0;
     right: 0;
@@ -322,7 +321,6 @@ footer {
     padding: 15px;
     text-align: center;
     font-size: 1em;
-    background: #121212; /* Темний фон, щоб поєднувалося */
 }
 
 /* Посилання у футері */

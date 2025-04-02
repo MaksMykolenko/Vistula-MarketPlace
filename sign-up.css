@@ -45,7 +45,7 @@ h1:hover, h2:hover {
 /* ====== ГОЛОВНІ СТИЛІ NAVBAR ====== */
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Вирівнюємо контент між лівим і правим краєм */
     align-items: center;
     padding: 10px 20px;
     background-color: #333;
@@ -55,16 +55,17 @@ h1:hover, h2:hover {
     z-index: 1000;
     top: 0;
 }
+
 /* Список навігації */
 .nav-list {
     list-style: none;
     display: flex;
-    justify-content: center; /* Центруємо елементи */
     align-items: center;
-    gap: 15px; /* Встановлюємо відстань між елементами */
-    width: 100%;
+    gap: 15px; /* Відстань між елементами */
     padding: 0;
     margin: 0;
+    flex-grow: 1; /* Дозволяє зайняти всю доступну ширину */
+    justify-content: center; /* Центруємо навігаційні елементи */
 }
 
 /* Стилі для посилань */
@@ -155,6 +156,30 @@ h1:hover, h2:hover {
     visibility: visible;
 }
 
+/* ====== СТИЛІ ДЛЯ ВИБОРУ МОВИ ====== */
+.language-selector {
+    display: flex;
+    align-items: center;
+}
+
+.language-selector select {
+    background-color: #222; /* Темний фон */
+    color: #fff; /* Білий текст */
+    border: 1px solid #555; /* Легка обводка */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.language-selector select:hover {
+    background-color: #333;
+}
+
+.language-selector select:focus {
+    border-color: #fff;
+}
 
 /* ====== МОБІЛЬНА ВЕРСІЯ (до 768px) ====== */
 @media (max-width: 768px) {
@@ -269,9 +294,9 @@ h1:hover, h2:hover {
 /* ====== СТИЛІ ДЛЯ ФОРМИ ====== */
 .signup-container form {
     display: flex;
-    flex-direction: column; /* Елементи розташовані вертикально */
+    flex-direction: column;
     width: 100%;
-    gap: 15px; /* Відступ між полями */
+    gap: 15px; /* Відступ між елементами */
 }
 
 /* Поля вводу */
@@ -325,6 +350,46 @@ h1:hover, h2:hover {
     color: #5d00ff;
 }
 
+/* ====== Контейнер галочки ====== */
+.terms-container {
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start; /* Вирівнює текст і чекбокс зверху */
+    gap: 10px;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+/* Чекбокс */
+.terms-container input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-top: 4px; /* Щоб чекбокс був вирівняний з першим рядком */
+}
+
+/* Текст і посилання */
+.terms-container label {
+    display: flex;
+    flex-direction: column; /* Текст стає в два рядки */
+    font-size: 14px;
+}
+
+/* Посилання на умови */
+.terms-container a {
+    color: #5d00ff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 2px; /* Додає невеликий відступ перед посиланням */
+}
+
+.terms-container a:hover {
+    text-decoration: underline;
+}
+
+
+
 /* Кнопка відправки */
 .btn {
     width: 100%;
@@ -342,6 +407,7 @@ h1:hover, h2:hover {
 .btn:hover {
     background: #5d00ffe9;
 }
+
 
 /* Адаптивність */
 @media (max-width: 480px) {

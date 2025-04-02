@@ -28,11 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-//=====================================================================//
 document.addEventListener("DOMContentLoaded", () => {
-    const registerForm = document.getElementById("registerForm");
-    const username = document.getElementById("username");
+    const loginForm = document.getElementById("registerForm");
     const email = document.getElementById("email");
     const password = document.getElementById("password");
     const togglePassword = document.getElementById("togglePassword");
@@ -50,13 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Валідація форми
-    registerForm.addEventListener("submit", (e) => {
+    loginForm.addEventListener("submit", (e) => {
         let valid = true;
-
-        if (username.value.trim().length < 3) {
-            alert("Ім'я користувача має містити не менше 3 символів");
-            valid = false;
-        }
 
         if (!email.value.includes("@") || !email.value.includes(".")) {
             alert("Введіть коректну електронну пошту");
@@ -79,14 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "search": "Search",
             "account": "Account",
             "searchPlaceholder": "Enter a query...",
-            "signup": "Sign Up",
-            "username": "Username:",
+            "login": "Login",
             "email": "Email:",
             "password": "Password:",
-            "registerBtn": "Register",
-            "haveAccount": "Already have an account?",
-            "termsText": "I agree with the",
-            "termsLink": "terms of service"
+            "loginBtn": "Log In",
+            "noAccount": "Don't have an account?",
+            "forgotPassword": "Forgot password?"
         },
         "ua": {
             "home": "Головна",
@@ -94,14 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "search": "Пошук",
             "account": "Акаунт",
             "searchPlaceholder": "Введіть запит...",
-            "signup": "Реєстрація",
-            "username": "Ім'я користувача:",
+            "login": "Вхід",
             "email": "Електронна пошта:",
             "password": "Пароль:",
-            "registerBtn": "Зареєструватися",
-            "haveAccount": "Вже маєш аккаунт?",
-            "termsText": "Я погоджуюсь з",
-            "termsLink": "умовами обслуговування"
+            "loginBtn": "Увійти",
+            "noAccount": "Не маєш аккаунту?",
+            "forgotPassword": "Забув пароль?"
         },
         "pl": {
             "home": "Strona główna",
@@ -109,14 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "search": "Szukaj",
             "account": "Konto",
             "searchPlaceholder": "Wpisz zapytanie...",
-            "signup": "Rejestracja",
-            "username": "Nazwa użytkownika:",
+            "login": "Logowanie",
             "email": "E-mail:",
             "password": "Hasło:",
-            "registerBtn": "Zarejestruj się",
-            "haveAccount": "Masz już konto?",
-            "termsText": "Zgadzam się z",
-            "termsLink": "warunkami korzystania"
+            "loginBtn": "Zaloguj się",
+            "noAccount": "Nie masz konta?",
+            "forgotPassword": "Zapomniałeś hasła?"
         }
     };
 
@@ -124,18 +110,26 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("[data-lang]").forEach(el => {
             el.textContent = translations[lang][el.getAttribute("data-lang")];
         });
+
         document.querySelector("[data-placeholder]").setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
-        
-        // Оновлення тексту у елементах форми
-        document.querySelector("label[for='username']").textContent = translations[lang]["username"];
+
+        // Оновлення тексту у формі
+        document.querySelector("h2:nth-of-type(2)").textContent = translations[lang]["login"];
         document.querySelector("label[for='email']").textContent = translations[lang]["email"];
         document.querySelector("label[for='password']").textContent = translations[lang]["password"];
-        document.querySelector("button[type='submit']").textContent = translations[lang]["registerBtn"];
-        document.querySelector(".not-have-account a").textContent = translations[lang]["haveAccount"];
-        
-        // Оновлення тексту для галочки умов обслуговування
-        document.getElementById("termsText").textContent = translations[lang]["termsText"];
-        document.getElementById("termsLink").textContent = translations[lang]["termsLink"];
+        document.querySelector("button[type='submit']").textContent = translations[lang]["loginBtn"];
+
+        // Оновлення тексту у посиланнях
+        const forgotPasswordLink = document.querySelector(".forgot-password");
+        const noAccountLink = document.querySelector(".sign-up");
+
+        if (forgotPasswordLink) {
+            forgotPasswordLink.textContent = translations[lang]["forgotPassword"];
+        }
+
+        if (noAccountLink) {
+            noAccountLink.textContent = translations[lang]["noAccount"];
+        }
     }
 
     const savedLang = localStorage.getItem("selectedLanguage") || "ua";

@@ -45,7 +45,7 @@ h1:hover, h2:hover {
 /* ====== ГОЛОВНІ СТИЛІ NAVBAR ====== */
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Вирівнюємо контент між лівим і правим краєм */
     align-items: center;
     padding: 10px 20px;
     background-color: #333;
@@ -55,16 +55,17 @@ h1:hover, h2:hover {
     z-index: 1000;
     top: 0;
 }
+
 /* Список навігації */
 .nav-list {
     list-style: none;
     display: flex;
-    justify-content: center; /* Центруємо елементи */
     align-items: center;
-    gap: 15px; /* Встановлюємо відстань між елементами */
-    width: 100%;
+    gap: 15px; /* Відстань між елементами */
     padding: 0;
     margin: 0;
+    flex-grow: 1; /* Дозволяє зайняти всю доступну ширину */
+    justify-content: center; /* Центруємо навігаційні елементи */
 }
 
 /* Стилі для посилань */
@@ -155,6 +156,30 @@ h1:hover, h2:hover {
     visibility: visible;
 }
 
+/* ====== СТИЛІ ДЛЯ ВИБОРУ МОВИ ====== */
+.language-selector {
+    display: flex;
+    align-items: center;
+}
+
+.language-selector select {
+    background-color: #222; /* Темний фон */
+    color: #fff; /* Білий текст */
+    border: 1px solid #555; /* Легка обводка */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.language-selector select:hover {
+    background-color: #333;
+}
+
+.language-selector select:focus {
+    border-color: #fff;
+}
 
 /* ====== МОБІЛЬНА ВЕРСІЯ (до 768px) ====== */
 @media (max-width: 768px) {
@@ -352,10 +377,28 @@ h1:hover, h2:hover {
 }
 
 .not-have-account {
-    margin-top: 20px;
-    text-align: center; /* Centers the text */
-    font-size: 14px; /* Adjusts readability */
+    display: flex;
+    justify-content: center; /* Центрування тексту */
+    align-items: center;
+    gap: 10px; /* Відстань між посиланнями */
+    margin-top: 15px;
+    font-size: 14px;
 }
+
+.not-have-account a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.not-have-account a:hover {
+    text-decoration: underline;
+}
+
+.not-have-account span {
+    color: #e0e0e0; /* Колір роздільника | */
+}
+
 
 /* ====== ФУТЕР ====== */
 footer {
