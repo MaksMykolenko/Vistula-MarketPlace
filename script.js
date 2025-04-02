@@ -78,10 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function changeLanguage(lang) {
+    if (!translations[lang]) return; // Перевіряємо, чи є переклад
+
     document.querySelectorAll("[data-lang]").forEach(el => {
-        el.textContent = translations[lang][el.getAttribute("data-lang")];
+        const key = el.getAttribute("data-lang");
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
     });
 
-    document.querySelector("[data-placeholder]").setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
+    // Оновлення плейсхолдера у пошуку
+    const searchInput = document.querySelector("[data-placeholder]");
+    if (searchInput && translations[lang]["searchPlaceholder"]) {
+        searchInput.setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
+    }
 }
+
 

@@ -121,29 +121,71 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function changeLanguage(lang) {
+        if (!translations[lang]) return; // Перевіряємо, чи є переклади для обраної мови
+    
+        // Оновлення всіх текстів із data-lang
         document.querySelectorAll("[data-lang]").forEach(el => {
-            el.textContent = translations[lang][el.getAttribute("data-lang")];
+            const key = el.getAttribute("data-lang");
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
         });
-        document.querySelector("[data-placeholder]").setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
-        
-        // Оновлення тексту у елементах форми
-        document.querySelector("label[for='username']").textContent = translations[lang]["username"];
-        document.querySelector("label[for='email']").textContent = translations[lang]["email"];
-        document.querySelector("label[for='password']").textContent = translations[lang]["password"];
-        document.querySelector("button[type='submit']").textContent = translations[lang]["registerBtn"];
-        document.querySelector(".not-have-account a").textContent = translations[lang]["haveAccount"];
-        
-        // Оновлення тексту для галочки умов обслуговування
-        document.getElementById("termsText").textContent = translations[lang]["termsText"];
-        document.getElementById("termsLink").textContent = translations[lang]["termsLink"];
+    
+        // Оновлення placeholder у полі пошуку (перевіряємо існування елемента)
+        const searchInput = document.querySelector("[data-placeholder]");
+        if (searchInput && translations[lang]["searchPlaceholder"]) {
+            searchInput.setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
+        }
+    
+        // Оновлення тексту у формі реєстрації (перевіряємо наявність перед зміною)
+        const usernameLabel = document.querySelector("label[for='username']");
+        if (usernameLabel && translations[lang]["username"]) {
+            usernameLabel.textContent = translations[lang]["username"];
+        }
+    
+        const emailLabel = document.querySelector("label[for='email']");
+        if (emailLabel && translations[lang]["email"]) {
+            emailLabel.textContent = translations[lang]["email"];
+        }
+    
+        const passwordLabel = document.querySelector("label[for='password']");
+        if (passwordLabel && translations[lang]["password"]) {
+            passwordLabel.textContent = translations[lang]["password"];
+        }
+    
+        const registerButton = document.querySelector("button[type='submit']");
+        if (registerButton && translations[lang]["registerBtn"]) {
+            registerButton.textContent = translations[lang]["registerBtn"];
+        }
+    
+        // Оновлення тексту у посиланні "Вже маєте акаунт?"
+        const haveAccountLink = document.querySelector(".not-have-account a");
+        if (haveAccountLink && translations[lang]["haveAccount"]) {
+            haveAccountLink.textContent = translations[lang]["haveAccount"];
+        }
+    
+        // Оновлення тексту для угоди про використання (перевіряємо існування елементів)
+        const termsText = document.getElementById("termsText");
+        if (termsText && translations[lang]["termsText"]) {
+            termsText.textContent = translations[lang]["termsText"];
+        }
+    
+        const termsLink = document.getElementById("termsLink");
+        if (termsLink && translations[lang]["termsLink"]) {
+            termsLink.textContent = translations[lang]["termsLink"];
+        }
     }
-
+    
+    // Отримуємо збережену мову або встановлюємо "ua" за замовчуванням
     const savedLang = localStorage.getItem("selectedLanguage") || "ua";
     languageSelect.value = savedLang;
     changeLanguage(savedLang);
-
+    
+    // Слухаємо зміну мови
     languageSelect.addEventListener("change", () => {
-        localStorage.setItem("selectedLanguage", languageSelect.value);
-        changeLanguage(languageSelect.value);
+        const selectedLang = languageSelect.value;
+        localStorage.setItem("selectedLanguage", selectedLang);
+        changeLanguage(selectedLang);
     });
+    
 });

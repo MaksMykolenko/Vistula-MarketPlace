@@ -107,37 +107,64 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function changeLanguage(lang) {
+        if (!translations[lang]) return; // Перевіряємо, чи є переклади для обраної мови
+    
+        // Оновлення всіх текстів із data-lang
         document.querySelectorAll("[data-lang]").forEach(el => {
-            el.textContent = translations[lang][el.getAttribute("data-lang")];
+            const key = el.getAttribute("data-lang");
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
         });
-
-        document.querySelector("[data-placeholder]").setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
-
-        // Оновлення тексту у формі
-        document.querySelector("h2:nth-of-type(2)").textContent = translations[lang]["login"];
-        document.querySelector("label[for='email']").textContent = translations[lang]["email"];
-        document.querySelector("label[for='password']").textContent = translations[lang]["password"];
-        document.querySelector("button[type='submit']").textContent = translations[lang]["loginBtn"];
-
-        // Оновлення тексту у посиланнях
+    
+        // Оновлення placeholder у полі пошуку (перевіряємо існування елемента)
+        const searchInput = document.querySelector("[data-placeholder]");
+        if (searchInput && translations[lang]["searchPlaceholder"]) {
+            searchInput.setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
+        }
+    
+        // Оновлення тексту у формі входу (перевіряємо наявність перед зміною)
+        const loginTitle = document.querySelector("h2:nth-of-type(2)");
+        if (loginTitle && translations[lang]["login"]) {
+            loginTitle.textContent = translations[lang]["login"];
+        }
+    
+        const emailLabel = document.querySelector("label[for='email']");
+        if (emailLabel && translations[lang]["email"]) {
+            emailLabel.textContent = translations[lang]["email"];
+        }
+    
+        const passwordLabel = document.querySelector("label[for='password']");
+        if (passwordLabel && translations[lang]["password"]) {
+            passwordLabel.textContent = translations[lang]["password"];
+        }
+    
+        const loginButton = document.querySelector("button[type='submit']");
+        if (loginButton && translations[lang]["loginBtn"]) {
+            loginButton.textContent = translations[lang]["loginBtn"];
+        }
+    
+        // Оновлення тексту у посиланнях (перевіряємо, чи вони існують)
         const forgotPasswordLink = document.querySelector(".forgot-password");
-        const noAccountLink = document.querySelector(".sign-up");
-
-        if (forgotPasswordLink) {
+        if (forgotPasswordLink && translations[lang]["forgotPassword"]) {
             forgotPasswordLink.textContent = translations[lang]["forgotPassword"];
         }
-
-        if (noAccountLink) {
+    
+        const noAccountLink = document.querySelector(".sign-up");
+        if (noAccountLink && translations[lang]["noAccount"]) {
             noAccountLink.textContent = translations[lang]["noAccount"];
         }
     }
-
+    
+    // Отримуємо збережену мову або встановлюємо "ua" за замовчуванням
     const savedLang = localStorage.getItem("selectedLanguage") || "ua";
     languageSelect.value = savedLang;
     changeLanguage(savedLang);
-
+    
+    // Слухаємо зміну мови
     languageSelect.addEventListener("change", () => {
-        localStorage.setItem("selectedLanguage", languageSelect.value);
-        changeLanguage(languageSelect.value);
+        const selectedLang = languageSelect.value;
+        localStorage.setItem("selectedLanguage", selectedLang);
+        changeLanguage(selectedLang);
     });
-});
+});    

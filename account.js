@@ -93,32 +93,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function changeLanguage(lang) {
+    if (!translations[lang]) return; // Переконуємось, що переклад існує
+
+    // Переклад загального контенту
     document.querySelectorAll("[data-lang]").forEach(el => {
         const key = el.getAttribute("data-lang");
-        el.textContent = translations[lang][key];
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
     });
 
-    document.querySelector("[data-placeholder]").setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
-
-    // Переклад кнопки редагування
-    document.getElementById("editProfile").textContent = translations[lang]["editProfile"];
-
-    // Переклад заголовка "Історія замовлень"
-    document.querySelector(".order-history h2").textContent = translations[lang]["orderHistory"];
-
-    // Переклад міток у профілі
-    const labels = document.querySelectorAll(".profile-details p strong");
-    if (labels.length >= 4) {
-        labels[0].textContent = translations[lang]["emailLabel"];
-        labels[1].textContent = translations[lang]["phoneLabel"];
-        labels[2].textContent = translations[lang]["adsLabel"];
-        labels[3].textContent = translations[lang]["purchasesLabel"];
+    // Оновлення плейсхолдера (якщо поле існує)
+    const searchInput = document.querySelector("[data-placeholder]");
+    if (searchInput && translations[lang]["searchPlaceholder"]) {
+        searchInput.setAttribute("placeholder", translations[lang]["searchPlaceholder"]);
     }
 
-    // Переклад історії замовлень
+    // Переклад кнопки редагування профілю
+    const editProfileBtn = document.getElementById("editProfile");
+    if (editProfileBtn && translations[lang]["editProfile"]) {
+        editProfileBtn.textContent = translations[lang]["editProfile"];
+    }
+
+    // Переклад заголовка "Історія замовлень"
+    const orderHistoryTitle = document.querySelector(".order-history h2");
+    if (orderHistoryTitle && translations[lang]["orderHistory"]) {
+        orderHistoryTitle.textContent = translations[lang]["orderHistory"];
+    }
+
+    // Переклад міток у профілі (переконуємося, що вони є)
+    const labels = document.querySelectorAll(".profile-details p strong");
+    if (labels.length >= 4) {
+        if (translations[lang]["emailLabel"]) labels[0].textContent = translations[lang]["emailLabel"];
+        if (translations[lang]["phoneLabel"]) labels[1].textContent = translations[lang]["phoneLabel"];
+        if (translations[lang]["adsLabel"]) labels[2].textContent = translations[lang]["adsLabel"];
+        if (translations[lang]["purchasesLabel"]) labels[3].textContent = translations[lang]["purchasesLabel"];
+    }
+
+    // Переклад історії замовлень (якщо є хоч одне замовлення)
     const orderItems = document.querySelectorAll(".order-history ul li p");
     if (orderItems.length > 1) {
-        orderItems[0].textContent = translations[lang]["orderExample1"];
-        orderItems[1].textContent = translations[lang]["orderExample2"];
+        if (translations[lang]["orderExample1"]) orderItems[0].textContent = translations[lang]["orderExample1"];
+        if (translations[lang]["orderExample2"]) orderItems[1].textContent = translations[lang]["orderExample2"];
     }
 }
